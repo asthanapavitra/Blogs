@@ -1,0 +1,29 @@
+
+        <%-include("partials/header.ejs") %>
+          <!-- Sample Blogs -->
+          <div class="container">
+            <% if (posts.length > 0) { %>
+                <% posts.forEach(function(post) { %>
+                    <div class="post">
+                        <h2><%= post.title %></h2>
+                        <%if(post.image){%>
+                        <img src="<%= post.image %>" alt="">
+                        <%}%>
+                        <p><%= post.content%>...</p>
+                        
+                        <a href="/posts/<%= post.id %>">Read more</a>
+                        
+                        <!-- Edit and Delete buttons -->
+                       <div class="post-actions">
+                        <a href="/edit/<%= post.id %>" class="edit-btn">Edit</a>
+                        <form action="/delete/<%= post.id %>" method="POST" class="delete-form">
+                         <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No posts to display.</p>
+            <% } %>
+        </div>
+       <%- include("partials/footer.ejs") %>

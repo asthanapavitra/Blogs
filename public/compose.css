@@ -1,0 +1,36 @@
+.entire{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
+    margin-top: 190px;
+}
+body{
+    background-image: url(https://media.istockphoto.com/id/1384939247/photo/woman-using-laptop-on-gray-background-with-copy-space.jpg?s=1024x1024&w=is&k=20&c=OKTt3WcQbPLVEAIA33MFenwGIIutlYCwENpe9sx5bu4=);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+}
+.content{
+    height: 150px;
+    width: 300px;
+}
+
+
+.input{
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+form{
+    /* border: 2px solid white; */
+    padding: 4px;
+    font-size:  1.25rem;
+    margin-top: -35px;
+}
+button{
+    background-color: rgb(125, 115, 115);
+}

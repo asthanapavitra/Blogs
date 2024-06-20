@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+
+    <style>
+        body{
+          background-image: url("https://static.vecteezy.com/system/resources/thumbnails/020/525/157/small/abstract-background-design-background-texture-design-with-abstract-style-creative-illustration-for-advertising-posters-business-cards-flyers-websites-banners-covers-landings-pages-etc-vector.jpg");
+          background-size: cover;
+          background-repeat: repeat-y;
+          font-family:'Times New Roman', Times, serif;
+        }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Stack elements vertically on small screens */
+        margin-top: 50px;
+    }
+    .ele {
+        margin: 10px;
+        padding: 5px;
+        width: 100%; /* Full width elements */
+    }
+    label {
+        font-size: 1.25rem;
+    }
+    .content {
+        height: 200px;
+        width: 100%; /* Full width textarea */
+    }
+    .text, button {
+        padding: 5px;
+        border-radius: 10px;
+        border: 2px solid gray;
+        width: 100%; /* Full width inputs and button */
+    }
+    button {
+        background-color: rgb(56, 56, 222);
+        color: white; /* Text color for better readability */
+    }
+    h1 {
+        text-align: center;
+    }
+    .title {
+        height: 40px;
+    }
+
+    /* Media query for tablets */
+    @media (min-width: 768px) {
+        .container {
+            flex-direction: row; /* Side by side elements on larger screens */
+            flex-wrap: wrap; /* Wrap elements if needed */
+            width: 100%; /* Use the full screen width */
+            margin-top: 50px;
+            padding: 0 10px; /* Add some padding on the sides */
+        }
+        .ele {
+            margin: 10px;
+            padding: 5px;
+            width: 100%; /* Adjust width for .ele elements */
+        }
+        .content {
+            height: 200px;
+            width: 100%; /* Increase width for .content */
+        }
+        .text, button {
+            padding: 5px;
+            border-radius: 10px;
+            border: 2px solid gray;
+            width: 100%; /* Adjust width for text inputs and button */
+        }
+        button {
+            background-color: rgb(56, 56, 222);
+            color: white;
+        }
+        h1 {
+            text-align: center;
+        }
+        .title {
+            height: 40px;
+            width: 100% ; /* Adjust width for .title */
+        }
+    }
+
+    /* Media query for desktops */
+    @media (min-width: 992px) {
+        .container {
+            max-width: 100%; /* Max container width */
+            margin: 50px auto; /* Center container */
+        }
+        .ele {
+            width: 500px; /* One third width elements with margin */
+        }
+        .content {
+            width: 500px;
+            height: 300px; /* Two thirds width textarea */
+        }
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="/update/<%= post.id %>" method="POST">
+        <div>
+            <div><h1>Edit Your Blog</h1></div>
+            <div class="ele">
+            <label for="title">Title </label><br>
+            <input class="text title" type="text" name="title" value="<%= post.title %>" required><br></div>
+            <div class="ele">
+            <label for="content">Content </label><br>
+            <textarea class="text content" name="content" required><%= post.content %></textarea><br></div>
+
+            <div class="ele"><button type="submit">Save Changes</button><br></div>
+        </div>
+    </form>
+</body>
+</html>
+
