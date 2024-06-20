@@ -2,27 +2,34 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     row-gap: 50px;
-    margin-top: 190px;
+    width: 800px;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(156, 154, 154, 0.2); 
+    height: 60vh;
 }
 body{
-    background-image: url(https://media.istockphoto.com/id/1384939247/photo/woman-using-laptop-on-gray-background-with-copy-space.jpg?s=1024x1024&w=is&k=20&c=OKTt3WcQbPLVEAIA33MFenwGIIutlYCwENpe9sx5bu4=);
-    background-repeat: no-repeat;
-    background-size: cover;
     font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .content{
     height: 150px;
-    width: 300px;
+   
+    border-radius: 10px;
 }
 
 
 .input{
     background-color: white;
-    margin: 5px;
+    /* margin: 5px; */
     padding: 5px;
+    width: 100%;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 form{
@@ -32,5 +39,6 @@ form{
     margin-top: -35px;
 }
 button{
-    background-color: rgb(125, 115, 115);
+    background-color: blue;
+    width: 100%;
 }
