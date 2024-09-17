@@ -1,36 +1,43 @@
-import express from "express"
+import dotenv from "dotenv";
+import express from "express";
 import bodyParser from "body-parser";
+import path from "path";
 
-const app= express();
-const port=3000;
+dotenv.config();
+const app = express();
+const port = process.env.PORT || 8000;
 
-app.use(express.static("public"));
-
+// Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req,res)=>{
-    res.render("index.ejs",{ posts: posts } );
+// Set view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.get("/", (req, res) => {
+    res.render("index", { posts: posts });
 });
 
-app.get("/compose.ejs", (req,res)=>{
-    res.render("compose.ejs");
+app.get("/compose", (req, res) => {
+    res.render("compose");
 });
 
-app.post("/submitted.ejs", (req,res)=>{
-    var title= req.body.title;
-    var content=(req.body.content);console.log(title + "/n"+content);
-    var post= {id:posts[posts.length-1].id+1, title,content}
-    
+app.post("/submitted", (req, res) => {
+    const title = req.body.title;
+    const content = req.body.content;
+    console.log(`${title}\n${content}`);
+    const post = { id: posts[posts.length - 1].id + 1, title, content };
     posts.push(post);
-    console.log(posts[posts.length-1]);
-    res.render("submitted.ejs");
+    console.log(posts[posts.length - 1]);
+    res.render("submitted");
 });
 
 app.get('/edit/:id', (req, res) => {
     const postId = req.params.id;
     const post = posts.find(p => p.id == postId);
     if (post) {
-        res.render('edit.ejs', { post: post });
+        res.render('edit', { post: post });
     } else {
         res.redirect('/');
     }
@@ -51,14 +58,15 @@ app.post('/update/:id', (req, res) => {
         res.redirect('/edit/' + postId);
     }
 });
+
 app.post('/delete/:id', (req, res) => {
     const postId = req.params.id;
     posts = posts.filter(p => p.id != postId);
     res.redirect('/');
-    // alert("Your post has been deleted");
 });
-app.listen(port, ()=>{
-    console.log("Server running on port "+ port);
+
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
 
 let posts=[
